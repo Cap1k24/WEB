@@ -1,0 +1,33 @@
+*{
+    margin: 0px;
+    padding: 0px ;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: url(./img/1.jpg) no-repeat;
+    background-size: cover;
+}
+.main{
+    padding:10px 5px;
+    width: 100%;
+    text-align: center;
+}
+.main .name-team{
+    float: left;
+    color: aqua;
+    
+}
+.main .slogan {
+    margin-top:40px;
+    text-align: center;
+    font-size:40px;
+}
+#firebaseui-auth-container{
+    position: absolute;
+    width: 500px;
+    padding: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Table</title>
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="table2excel.js"></script>
+</head>
+<body>
+    <div>
+        <div class="container mt-3">
+            <div class="link-db">
+            <h1>Bảng dữ liệu người dùng</h1>
+            <hr>
+             <div class="Excel">
+                <button id="download-excel">Export to Excel</button>
+            </div> 
+            <div class="clear"></div>
+        </div>
+        <div class="app">
+            <!--Search section start-->
+            <div class="input-group mb-3 mt-3">
+                <input id="SearchBar" type="text" class="form-control" placeholder="Search A Record" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <select class="custom-select" id="CategorySelected">
+                        <option selected value="1">By Họ Và tên</option>
+                        <option value="2">By CMND</option>
+                        <option value="3">By SĐT</option>
+                        <option value="4">By Nơi ở hiện tại</option>
+                        <option value="5">By Nơi đi</option>
+                        <option value="6">By Nơi đến</option>
+                        <option value="7">By Chốt Kiểm dịch</option>
+                        <option value="8">By Số mũi đã tiêm</option>
+                        <option value="9">By Tiếp xúc với người bệnh</option>
+                        <option value="10">By Trong vùng dịch</option>
+                        <option value="11">By Giới tính</option>
+                      </select>
+                  <button id="SearchBtn" class="btn btn-outline-primary ml-1" type="button">Search</button>
+                </div>
+            </div>       
+            <!--Search section ends-->       
+            <table class="table table-dark " id="example-table">
+                <thead>
+                    <th>STT</th>
+                    <th>Họ và tên</th>
+                    <th>CMND</th>
+                    <th>SĐT</th>
+                    <th>Nơi ở hiện tại</th>
+                    <th>Nơi đi</th>
+                    <th>Nơi đến</th>
+                    <th>Chốt kiểm dịch</th>
+                    <th>Số mũi đã tiêm</th>
+                    <th>Tiếp xúc với người bênh</th>
+                    <th>Trong vùng dịch</th>
+                    <th>Giới tính</th>
+                    <th>Control Center</th>
+                </thead>
+                <tbody id ="tbody1"></tbody>
+            </table>
+        </div>
+    
+        <!-- Modal -->
+        <!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Control Panel</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <label class="labs">Họ và tên:</label>
+                    <input type="text" id="nameMod"> <br>
+                    <label class="labs">CMND:</label>
+                    <input type="text" id="CMNDMod"> <br>
+                    <label class="labs">SĐT:</label>
+                    <input type="text" id="sdtMod"> <br>
+                    <label class="labs">Nơi ở hiện tại:</label>
+                    <input type="text" id="secMod"> <br>
+                    <label class="labs">Nơi đi:</label>
+                    <input type="text" id="startMod"> <br>
+                    <label class="labs">Nơi đến:</label>
+                    <input type="text" id="endMod"> <br>
+                    <label class="labs">Chốt kiểm dịch:</label>
+                    <input type="text" id="checkMod"> <br>
+                    <label class="labs">Số mũi đã tiêm:</label>
+                    <input type="text" id="vcMod"> <br>
+                    <label class="labs">Tiếp xúc với người bệnh:</label>
+                    <input type="text" id="contactMod"> <br>
+                    <label class="labs">Trong vùng dịch:</label>
+                    <input type="text" id="regionMod"> <br>
+                    <label class="labs">Giới tính:</label>
+                    <input type="text" id="genMod"> <br>
+                </div>
+                <div class="modal-footer">
+ 
+                    <button id="UpdModBtn" type="button" class="btn btn-success" onclick="UpdStd()">Update</button>
+                    <button id="DelModBtn" type="button" class="btn btn-danger" >Delete</button>
+                </div> -->
+            </div>
+            </div> 
+        </div>
+    </div>
+    <script type="module" src="./index.js"></script>
+    <script> 
+        document.getElementById('download-excel').addEventListener('click', function(){
+            var table2excel = new Table2Excel();
+            table2excel.export(document.querySelectorAll("#example-table"));
+        })
+    </script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+   
+</body>
+</html>
+
+
+
+
+
